@@ -1,0 +1,6 @@
+ollama:
+  model_path: "C:/Users/blc/.ollama/models/manifests/registry.ollama.ai/library/llama3.1"  # Especifica o caminho para o modelo 8b
+  use_gpu: true  # Define se a GPU deve ser usada (true) ou não (false)
+logging:
+  level: INFO  # Define o nível de detalhes dos logs (pode ser DEBUG, INFO, WARNING, ERROR, CRITICAL)
+  file: logs/ollama_runner.log  # Especifica o caminho e o nome do arquivo onde os logs serão salvos
