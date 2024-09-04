@@ -1,12 +1,12 @@
 # Ollama Python Runner
 
-This project enables the execution of language models from Ollama using Python. It is designed to facilitate the use of large language models like `llama3.1:8b` directly from Python scripts, with support for custom configurations and GPU usage.
+This project enables the execution of language models from Ollama using Python. It is designed to facilitate the use of large language models like `llama3.1:8b` directly from Python scripts, with support for custom configurations and GPU usage. The project now includes a feature to list available models and allow the user to select a model via an interactive loop before running the selected model.
 
 ## Project Structure
 
 - **src/**: Contains the main code of the project.
-  - **ollama_runner.py**: Script that runs the Ollama model.
-  - **main.py**: Entry script that initiates the model execution.
+  - **ollama_runner.py**: Script that lists available models, allows model selection, and runs the selected Ollama model.
+  - **main.py**: Entry script that initiates the model selection and execution.
 - **tests/**: Contains tests for the project.
 - **config/**: Contains configuration files.
   - **config.yaml**: Configuration file that defines the model path, GPU usage, and logging settings.
@@ -48,7 +48,7 @@ To run a model with Ollama, execute the main script:
 python src/main.py
 ```
 
-This will load the specified model in the `config.yaml` file and run Ollama with the provided configurations.
+This will list the available models, prompt you to select a model by entering its corresponding number, and then run the selected model with the provided configurations.
 
 ## Customization
 

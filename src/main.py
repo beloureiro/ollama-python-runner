@@ -1,16 +1,11 @@
-from ollama_runner import run_ollama  # Importa a função run_ollama do arquivo ollama_runner.py
+# Import the run_ollama function from the ollama_runner.py file
+from ollama_runner import run_ollama  
 
-if __name__ == "__main__":  # Verifica se o script está sendo executado diretamente (não importado como um módulo)
-    model_name = "llama3.1:8b"  # Define o nome do modelo a ser executado. Pode ser substituído pelo nome de qualquer outro modelo disponível.
-    
+# Check if the script is being run directly (not imported as a module)
+if __name__ == "__main__":
     try:
-        # Tenta executar a função run_ollama usando o modelo especificado
-        output = run_ollama(model_name)
-        
-        # Se a execução foi bem-sucedida, imprime a mensagem e a saída do modelo
-        print("Modelo rodado com sucesso:")
-        print(output)
-    
+        # Attempt to execute the Ollama with the model selection logic
+        run_ollama()
     except Exception as e:
-        # Se houver qualquer erro durante a execução, captura a exceção e imprime uma mensagem de erro
-        print("Erro ao rodar o modelo:", e)
+        # If any error occurs during execution, capture the exception and print an error message
+        print("Error running the model:", e)
