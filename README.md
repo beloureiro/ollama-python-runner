@@ -63,3 +63,21 @@ Contributions are welcome! To contribute, fork the repository, create a branch f
 ## License
 
 This project is licensed under the MIT License. See the LICENSE file for more details.
+
+## Usage
+
+To run the application, simply execute the main script:
+
+```bash
+python src/main.py
+```
+
+This will automatically start the Ollama application in `serve` mode, allowing it to respond to commands.
+
+## Dependencies
+
+Make sure to have the following dependencies installed:
+
+- `psutil`: Used to check if the Ollama process is running.
+
+You can install the dependencies using:

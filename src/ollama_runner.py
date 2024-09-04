@@ -3,6 +3,18 @@ import yaml  # Import the yaml module to read and manipulate YAML configuration 
 import time  # Import the time module to allow adding delays.
 import psutil  # Importar psutil para verificar processos em execução
 
+def start_ollama():
+    """
+    Function to start the Ollama application.
+    """
+    print("Starting Ollama...")
+    try:
+        # Iniciar o Ollama no modo 'serve'
+        subprocess.Popen(['C:/Users/blc/AppData/Local/Programs/Ollama/ollama.exe', 'serve'])
+        time.sleep(5)  # Aguarde alguns segundos para o Ollama iniciar
+    except Exception as e:
+        print(f"Failed to start Ollama: {e}")
+
 def load_config():
     """
     Function to load the configuration from the config.yaml file.
@@ -32,29 +44,33 @@ def is_ollama_ready():
     """
     print("Checking if Ollama is ready...")  # Debug message
     if not is_ollama_running():
-        print("Ollama is not running. Please start the Ollama application.")  # Mensagem de erro
-        return False
+        print("Ollama is not running. Starting the Ollama application...")
+        start_ollama()  # Tente iniciar o Ollama
+        if not is_ollama_running():
+            print("Ollama failed to start. Please start the Ollama application manually.")
+            return False
 
-    for attempt in range(5):  # Try up to 5 times before giving up
+    # Verifique se o Ollama está pronto
+    for attempt in range(5):
         try:
             print(f"Attempt {attempt + 1} to check Ollama status...")  # Debug message
             result = subprocess.run(
                 ['C:/Users/blc/AppData/Local/Programs/Ollama/ollama.exe', 'list'],
                 capture_output=True, text=True, check=True,
-                timeout=10  # Timeout de 10 segundos
+                timeout=10
             )
             if result.returncode == 0:
                 print("Ollama is ready.")  # Debug message
-                return True  # Ollama is ready
+                return True
         except subprocess.CalledProcessError as e:
             print(f"Ollama not ready, retrying... ({e})")  # Debug message
-            time.sleep(2)  # Wait for 2 seconds before retrying
+            time.sleep(2)
         except subprocess.TimeoutExpired:
-            print("Ollama did not respond in time, retrying...")  # Debug message
-            time.sleep(2)  # Wait for 2 seconds before retrying
+            print("Ollama did not respond in time, retrying...")
+            time.sleep(2)
 
-    print("Ollama is not ready after 5 attempts.")  # Debug message
-    return False  # Ollama is not ready
+    print("Ollama is not ready after 5 attempts.")
+    return False
 
 def list_models():
     """
