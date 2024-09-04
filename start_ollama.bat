@@ -1,5 +1,18 @@
 @echo off
-cd /d "D:\OneDrive - InMotion - Consulting\AI Projects\ollama-python-runner"  # Navigate to your project directory
-call venv\Scripts\activate  # Activate the virtual environment
-python src\main.py  # Run the Python script
-pause  # Keeps the command prompt open after the script runs
+REM Navigate to your project directory
+cd /d "D:\OneDrive - InMotion - Consulting\AI Projects\ollama-python-runner"
+
+REM Check if the virtual environment exists
+IF NOT EXIST venv (
+    echo Virtual environment not found. Please set it up first.
+    exit /b
+)
+
+REM Activate the virtual environment
+call venv\Scripts\activate
+
+REM Run the Python script
+python src\main.py
+
+REM Keeps the command prompt open after the script runs
+pause
